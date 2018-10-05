@@ -5,6 +5,7 @@
     ],
     "rules": {
         "strict": 0,
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "import/prefer-default-export": 0
     }
 }

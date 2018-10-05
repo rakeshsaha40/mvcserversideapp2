@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>{{title}}</title>
-  </head>
-  <body>
+    <style>
+        body {
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        header {
+            background-color: #8ac5c3;
+        }
+
+        footer {
+            background-color: #edece8;
+        }
+
+    </style>
+</head>
+
+<body>
     <header>
-      This is the header.
+        This is the header.
     </header>
     <div>
-      {% block body %}
-      {% endblock %}
+        {% block body %}
+        {% endblock %}
     </div>
     <footer>
-      This is the footer.
+        This is the footer.
     </footer>
-  </body>
+</body>
+
 </html>
