@@ -29,6 +29,10 @@ app.set('view engine', 'html');
 app.get('/', indexControllers.index);
 app.get('/attendees', attendeeControllers.listAttendees);
 
+app.get('/nickname', (request, response) => {
+    response.send('faithful-spider');
+});
+
 // Start up the application and listen on the specified
 // port, or default to port 4000.
 app.listen(process.env.PORT || 4000);
