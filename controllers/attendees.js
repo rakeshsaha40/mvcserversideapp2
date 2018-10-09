@@ -9,33 +9,41 @@ function listAttendees(request, response) {
     const query = request.query.q;
     
     var i;
-    const filterPeople = [ ];
+    var filterPeople = [ ];
+    var lowerQuery;
     
-    if(query != null) {  var lowerQuery = query.toLowerCase(); }
+    if(query != null) { lowerQuery = query.toLowerCase(); }
     
         for(i = 0; i < allPeople.length; i++) {
         
-            filterPeople.push(allPeople[i].toLowerCase());
+            filterPeople[i] = allPeople[i].toLowerCase();
          }
     
         
         if(filterPeople.indexOf(lowerQuery) != -1) { 
-        
-            while(allPeople.length > 0) {
             
-                allPeople.pop();
-             }
-            allPeople[0] = query;
+            var tempPeople = [ ];
+            
+            tempPeople[0] = allPeople[filterPeople.indexOf(lowerQuery)];
+            
+            const contextDataResult = {
+                title: 'List of attendees',
+                peopleMatchignQuery: tempPeople,
+            };
+            
+            response.render('attendees', contextDataResult);
+            
+        } else {
+    
+            const contextData = {
+                title: 'List of attendees',
+                peopleMatchignQuery: allPeople,
+            };
+            
+            response.render('attendees', contextData);
         }
     
-
     
-    const contextData = {
-        title: 'List of attendees',
-        peopleMatchignQuery: allPeople,
-    };
-    
-    response.render('attendees', contextData);
 }
 
 module.exports = {
